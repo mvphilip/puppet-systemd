@@ -1,0 +1,19 @@
+{
+  "name": "systemd",
+  "version": "1.0.0",
+  "author": "Paul Kranenburg",
+  "summary": "SYSTEMD configuration",
+  "license": "MIT",
+  "source": "https://github.com/DesideriusE/puppet-systemd.git",
+  "project_page": "https://github.com/DesideriusE/puppet-systemd",
+  "issues_url": "https://github.com/DesideriusE/puppet-systemd/issues",
+  "dependencies": [],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">=4.0.0"
+    }
+  ],
+  "tags": [ "systemd" ]
+
+}
