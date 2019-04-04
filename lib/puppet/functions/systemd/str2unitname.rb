@@ -17,7 +17,7 @@ Puppet::Functions.create_function(:'systemd::str2unitname') do
 
     # In path mode, if the result is now empty, we'll make
     # it represent the root directory
-    return '-' if t.empty?
+    return '-' if pathmode && t.empty?
 
     # \x<nn> escape all chars except alpha-numerics, underbars, slashes and dots
     t = t.gsub(/([^A-Za-z0-9_\/.])/) { |c| "\\x#{c.ord.to_s(16)}" }
