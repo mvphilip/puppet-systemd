@@ -1,5 +1,5 @@
 {
-  "name": "systemd",
+  "name": "pk-systemd",
   "version": "1.0.0",
   "author": "Paul Kranenburg",
   "summary": "SYSTEMD configuration",
@@ -14,6 +14,22 @@
       "version_requirement": ">=4.0.0"
     }
   ],
-  "tags": [ "systemd" ]
+  "tags": [ "systemd" ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7",
+        "8"
+      ]
+    }
+  ]
 
 }
