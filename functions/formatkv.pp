@@ -15,7 +15,7 @@ function systemd::formatkv($section,$h) {
   #
   $directives = $h.reduce('') |$memo,$v| {
     $s = [$v[1]].flatten.filter |$a| { !empty($a) }.join(' ')
-    empty($s) ? { false => "${memo}\n${v[0]} = ${s}", true => $memo }
+    empty($s) ? { false => "${memo}\n${v[0]}=${s}", true => $memo }
   }
 
   if empty($directives) { return('') }
