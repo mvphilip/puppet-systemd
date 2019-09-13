@@ -6,5 +6,5 @@ Bugfix release
 
 #### Fixed
 - systemd::service::simple_service: fix spelling of 'Environment' parameters
-- systemd::functions::formatkv: remove space form key/value declaration (from runehuhl)
+- systemd::functions::formatkv: remove space form key/value declaration (from runejuhl)
 
