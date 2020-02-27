@@ -4,12 +4,15 @@
 ##
 ## Notes:
 ##   The section header is included in the output
+##
 ##   Empty values are filtered out
+##
 ##   Values of type ARRAY are converted to a space-separated string
-##   If the first value presented for a directive is an empty string or the special string '__RESET__'
-##   then the directive is reset by producing output of the form "Directive=". This syntax
-##   is interpreted by systemd to reset the accumulation of values for this directive,
-##   if applicable.
+##
+##   If the first value presented for a directive is the empty string or
+##   the special string '__RESET__', then the directive is reset by producing
+##   output of the form "Directive=". This syntax is interpreted by systemd
+##   to reset the accumulation of values for this directive, if applicable.
 #
 function systemd::formatkv($section,$h) {
 
