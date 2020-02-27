@@ -68,7 +68,14 @@ systemd::service::custom
 The following resources in the systemd::unit namespace have parameters that
 represent typical unit-specific configuration options. All of them accept
 parameters ('*_options') that allow any systemd options to be configured.
+These parameters accept an array of values, which result in systemd directives with values
+separated by spaces. The first element in an array of values passed to the pupper resources
+is treated specially: if this element is the empty string or the reserved word '__RESET__',
+then a systemd configuration line of the form "Directive=" is generated, which effectively
+resets this directive in the systemd unit.
+
 Note that in all system::unit resources, the 'description' parameter is mandatory.
+
 
 systemd::unit::mount
 
