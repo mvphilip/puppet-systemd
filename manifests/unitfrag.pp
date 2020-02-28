@@ -50,20 +50,22 @@ define systemd::unitfrag (
   ## Manage the systemd unit file from the specified content and notify
   ## the system loader, if necessary
   #
-  file { $dirname :
+  ensure_resource('file', $dirname, {
     ensure => 'directory',
     owner  => 'root',
     group  => 'root',
     mode   => '0755',
-  }
-  -> file { $filename :
+  })
+
+  file { $filename :
     ensure  => $ensure,
     owner   => 'root',
     group   => 'root',
     mode    => '0444',
     content => inline_epp($unitcontent),
     before  => $::systemd::daemon_reload,
-    notify  => $::systemd::daemon_reload
+    notify  => $::systemd::daemon_reload,
+    require => File[$dirname]
   }
 
 }
