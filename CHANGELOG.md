@@ -1,5 +1,13 @@
 # Change log
 
+## Release [1.1.0]
+### Summary
+Feature: systemd directive reset option
+
+#### Added
+- systemd::functions::formatkv: support for resetting multi-valued systemd unit directives
+
+
 ## Release [1.0.1]
 ### Summary
 Bugfix release
