@@ -2,6 +2,9 @@
 ## This function manages a simple service configuration file.
 ## All parameters correspond to directives in the systemd unit file.
 ##
+## Note: for historic reasons, a collection of quite arbitrary service
+## parameters are available as 'first-class parameters' in this function.
+##
 #
 define systemd::service::simple (
   String $description,
@@ -29,6 +32,9 @@ define systemd::service::simple (
   Boolean                                   $manage_unitstatus = true,
   Enum['running','stopped']                 $unit_ensure = 'running',
   Boolean                                   $unit_enable = true,
+  Optional[Hash]                            $unit_options    = {},
+  Optional[Hash]                            $install_options = {},
+  Optional[Hash]                            $service_options = {},
 ) {
 
   include ::systemd
@@ -44,7 +50,7 @@ define systemd::service::simple (
     unit_ensure       => $unit_ensure,
     unit_enable       => $unit_enable,
 
-    unit_options      => {
+    unit_options      => $unit_options + {
       'Description'              => $description,
       'Requires'                 => $requires,
       'Before'                   => $before,
@@ -52,12 +58,12 @@ define systemd::service::simple (
       'ConditionPathIsDirectory' => $cond_path_is_directory,
     }.filter |$k,$v| { !$v.empty },
 
-    install_options   => {
+    install_options   => $install_options + {
       'WantedBy'   => $wantedby,
       'RequiredBy' => $requiredby,
     }.filter |$k,$v| { !$v.empty },
 
-    type_options      => {
+    type_options      => $service_options + {
       'ExecStart'          => $exec_start,
       'ExecStop'           => $exec_stop,
       'ExecReload'         => $exec_reload,
