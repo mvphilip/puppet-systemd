@@ -46,10 +46,10 @@ define systemd::unit::timer (
     install_options   => $install_options + { 'WantedBy' => $wantedby, },
     type_options      => $timer_options + {
       'OnActiveSec'       => $on_active,
-      'OnBootSec'         => $on_active,
-      'OnStartupSec'      => $on_active,
-      'OnUnitActiveSec'   => $on_active,
-      'OnUnitInactiveSec' => $on_active,
+      'OnBootSec'         => $on_boot,
+      'OnStartupSec'      => $on_startup,
+      'OnUnitActiveSec'   => $on_unitactive,
+      'OnUnitInactiveSec' => $on_unitinactive,
       'Unit'              => $start_unit
     },
   }
