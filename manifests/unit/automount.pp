@@ -26,6 +26,7 @@ define systemd::unit::automount (
   String                                    $where,
   String                                    $ensure = 'present',
   Optional[String]                          $type = undef,
+  Optional[String]                          $name = undef,
   Optional[String]                          $options = undef,
   Optional[String]                          $idle_timeout = undef,
   Optional[String]                          $directory_mode = '0755',
@@ -49,8 +50,10 @@ define systemd::unit::automount (
   ## it must be the mount path with slashes replaced by dashes, except
   ## for the first slash, which must be removed.
   #
-  $unit_name = systemd::str2unitname($where)
-
+  
+  # $unit_name = systemd::str2unitname($where)
+  $unit_name = $name
+  
   ## Configure the automount unit
   systemd::unit { "${title}::automount":
     ensure            => $ensure,
