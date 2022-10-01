@@ -51,11 +51,8 @@ define systemd::unit::automount (
   ## for the first slash, which must be removed.
   #
   
-  # $unit_name = systemd::str2unitname($where)
-  $unit_name = $custom_name ? {
-       "" => systemd::str2unitname($where),
-       default => $custom_name
-  }
+  $unit_name = systemd::str2unitname($where)
+  notify { "UNIT => ${unit_name}" }
   
   ## Configure the automount unit
   systemd::unit { "${title}::automount":
